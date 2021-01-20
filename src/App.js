@@ -7,13 +7,16 @@ const App = () => {
 
   const [selectedVideo, setSelectedVideo] = useState('');
 
-
+  const setVideo = (videoTitle) => {
+    setSelectedVideo(videoTitle)
+  }
 
 
   return (
     <Router>
+      <Route path='/' render={() => selectedVideo} />
       <Link to='/videos'>Videos</Link>
-      <Route path='/videos' component={() => <Videos url='http://localhost:3000' />}/>
+      <Route path='/videos' component={() => <Videos url='http://localhost:3000' onClickCallback={setVideo}/>}/>
     </Router>
   );
 }

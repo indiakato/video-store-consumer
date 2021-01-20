@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Video = ({id, title, overview, releaseDate, imageUrl, externalId, onClickCallback}) => {
 
   const onButtonClick = () => {
-    onClickCallback(id);
+    onClickCallback(title);
   } 
 
   return(
