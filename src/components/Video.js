@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Video = ({id, title, overview, releaseDate, imageUrl, externalId}) => {
+const Video = ({id, title, overview, releaseDate, imageUrl, externalId, onClickCallback}) => {
+
+  const onButtonClick = () => {
+    onClickCallback(title);
+  } 
 
   return(
     <div>
-      <p>{id} {title} {overview} {releaseDate} {imageUrl} {externalId}</p>
+      <button onClick={onButtonClick}>{title}</button>
+      {/* should include an image tag */}
+      <p>{id} {overview} {releaseDate} {imageUrl} {externalId}</p>
     </div>
   )
 
@@ -18,7 +24,8 @@ Video.propTypes = {
   overview: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
   imageUrl: PropTypes.string,
-  externalID: PropTypes.number
+  externalID: PropTypes.number,
+  onClickCallback: PropTypes.func.isRequired
 };
 
 export default Video;
