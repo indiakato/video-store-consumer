@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import './App.css';
 import Videos from './components/Videos';
-import Customers from './components/Customers'
+import Customers from './components/Customers';
+import Homepage from './components/Homepage'
 
 const App = () => {
 
@@ -14,7 +15,8 @@ const App = () => {
 
   return (
     <Router>
-      <Route path='/' render={() => selectedVideo} />
+      <Route path="/" component={() => <Homepage url='http://localhost:3000'/>}/>
+      <Link to='./'>Home</Link>
       <Link to='/videos'>Videos</Link>
       <Route path='/videos' component={() => <Videos url='http://localhost:3000' onClickCallback={setVideo}/>}/>
       <Link to='/customers'>Customers</Link>
