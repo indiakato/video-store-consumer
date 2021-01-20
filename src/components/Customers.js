@@ -5,6 +5,7 @@ import Customer from './Customer'
 
 const Customers = ({url}) => {
     const [customers, setCustomers] = useState([]);
+    const [errorMessage, setErrorMessage] = useState([])
 
     useEffect(() => {
         axios.get(url + '/customers')
@@ -26,8 +27,7 @@ const Customers = ({url}) => {
         setCustomers(apiCustomers)
         })
         .catch((error) => {
-        // do something with this.. maybe another state variable?
-        // console.log(error)
+            setErrorMessage(error.message)
         })
     }, [url])
 
