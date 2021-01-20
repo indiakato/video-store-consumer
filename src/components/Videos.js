@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Video from './Video';
 
-const Videos = ({url}) => {
+const Videos = ({url, onClickCallback}) => {
   const [videos, setVideos] = useState([]);
+  const [errorMessage, setErrorMessage] = useState([]);
 
   useEffect(() => {
     axios.get(url + '/videos')
@@ -22,19 +23,21 @@ const Videos = ({url}) => {
       setVideos(apiVideos)
     })
     .catch((error) => {
-      // do something with this.. maybe another state variable?
-      // console.log(error)
+      setErrorMessage(error.message)
     })
   }, [url])
 
   const loadBoard = () => {
     return videos.map((video) => {
-      return <Video id={video.id} title={video.title} overview={video.overview} releaseDate={video.releaseDate} key={video.id}/>
+      return <Video id={video.id} title={video.title} overview={video.overview} releaseDate={video.releaseDate} imageUrl={video.imageUrl} externalId={video.externalID} onClickCallback={onClickCallback} key={video.id}/>
     })
   }
 
   return(
-    <div>{loadBoard()}</div>
+    <div>
+      {errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
+      {loadBoard()}
+    </div>
   )
 
 }
