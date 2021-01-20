@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
-import Video from './Video';
+import PropTypes from 'prop-types'
+import axios from 'axios'
+import Video from './Video'
 
 const Videos = ({url, onClickCallback}) => {
   const [videos, setVideos] = useState([]);
