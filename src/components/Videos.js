@@ -1,31 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types'
-import axios from 'axios'
 import Video from './Video'
 
-const Videos = ({url, onClickCallback}) => {
-  const [videos, setVideos] = useState([]);
-  const [errorMessage, setErrorMessage] = useState([]);
-
-  useEffect(() => {
-    axios.get(url + '/videos')
-    .then((response) => {
-      const apiVideos = response.data.map((apiVideo) => {
-        return ({
-          id: apiVideo.id,
-          title: apiVideo.title,
-          overview: apiVideo.overview,
-          releaseDate: apiVideo.release_date,
-          imageUrl: apiVideo.image_url,
-          externalID: apiVideo.externalID
-        })
-      })
-      setVideos(apiVideos)
-    })
-    .catch((error) => {
-      setErrorMessage(error.message)
-    })
-  }, [url])
+const Videos = ({videos, onClickCallback}) => {
 
   const loadBoard = () => {
     return videos.map((video) => {
@@ -35,7 +12,6 @@ const Videos = ({url, onClickCallback}) => {
 
   return(
     <div>
-      {errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
       {loadBoard()}
     </div>
   )
@@ -43,7 +19,8 @@ const Videos = ({url, onClickCallback}) => {
 }
 
 Videos.propTypes = {
-  url: PropTypes.string.isRequired
+  videos: PropTypes.object.isRequired,
+  onClickCallback: PropTypes.func.isRequired
 };
 
 export default Videos;

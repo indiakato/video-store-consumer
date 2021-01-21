@@ -24,7 +24,7 @@ Customer.propTypes = {
     address: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
-    postalCode: PropTypes.number.isRequired,
+    postalCode: PropTypes.string.isRequired,
     videosCheckedOutCount: PropTypes.number.isRequired,
 };
 
