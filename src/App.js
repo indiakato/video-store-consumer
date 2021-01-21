@@ -98,11 +98,14 @@ const App = () => {
   
   return (
     <div>
+      <nav className="navbar navbar-light bg-light">
+        <Link to='/'>Home</Link>
+        <Link to='/customers'>Customers</Link>
+        <Link to='/library'>Videos</Link>
+      </nav>
       {errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
       <Router>
-      <Link to='/'>Home</Link>
-      <Link to='/customers'>Customers</Link>
-      <Link to='/library'>Videos</Link>
+
       {selectedCustomer && selectedVideo ? checkOutVideoBtn() : ''}
       <Route path='/' render={() => selectedVideo} />
       <Route path='/' render={() => selectedCustomer} />
