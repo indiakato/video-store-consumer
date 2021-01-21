@@ -75,11 +75,13 @@ const App = () => {
       <Link to='/'>Home</Link>
       <Link to='/customers'>Customers</Link>
       <Link to='/library'>Videos</Link>
+      {selectedCustomer && selectedVideo ? <Link to='/checkout'>Checkout</Link> : ''}
       <Route path='/' render={() => selectedVideo} />
       <Route path='/' render={() => selectedCustomer} />
       <Route path='/customers' component={() => <Customers customers={customers} onClickCallback={showCustomer} />}/>
       <Route path='/library' component={() => <Videos videos={videos} onClickCallback={showVideo}/>}/>
     </Router>
+    
     </div>
   );
 }
