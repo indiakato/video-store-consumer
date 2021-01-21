@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Customer = ({id, name, registeredAt, address, city, state, postalCode, phone, accountCredit, videosCheckedOutCount, onClickCallback}) => {
 
   const onButtonClick = () => {
-    onClickCallback(name);
+    onClickCallback([id]);
   } 
 
   return(

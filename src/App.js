@@ -4,6 +4,7 @@ import './App.css';
 import Videos from './components/Videos';
 import Customers from './components/Customers'
 import axios from 'axios'
+import moment from 'moment'
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -15,12 +16,26 @@ const App = () => {
   const [customers, setCustomers] = useState([]);
   const [errorMessage, setErrorMessage] = useState([]);
 
+
+  const getDueDate = () => {
+    const date = new Date()
+    date.setDate(date.getDate() + 7)
+    return (moment(date).format('MMM, D YYYY'))
+  }
+
   const showVideo = (videoTitle) => {
     setSelectedVideo(videoTitle)
   }
 
-  const showCustomer = (customerName) => {
-    setSelectedCustomer(customerName)
+  // todo: this shows the customer id and not name on every page now
+  const showCustomer = ([customerID, customerName]) => {
+    setSelectedCustomer(customerID)
+  }
+
+  const checkOutVideoBtn = () => {
+    return (
+      <button onClick={checkout} >Check Out</button>
+    )
   }
 
   useEffect(() => {
@@ -66,7 +81,20 @@ const App = () => {
     .catch((error) => {
         setErrorMessage(error.message)
     })
-}, [])
+  }, [])
+
+  const checkout = () => {
+    axios.post(`${BASE_URL}/rentals/${selectedVideo}/check-out?customer_id=${selectedCustomer}&due_date=${getDueDate()}`)
+    .then((response) => {
+      console.log(response)
+      setErrorMessage(`Movie titled ${selectedVideo} checked out to Customer ID: ${selectedCustomer}`)
+    })
+    .catch((error) =>{
+      setErrorMessage(`Unable to checkout movie titled ${selectedVideo} to Customer ID: ${selectedCustomer}`);
+    })
+
+  }
+
   
   return (
     <div>
@@ -75,7 +103,7 @@ const App = () => {
       <Link to='/'>Home</Link>
       <Link to='/customers'>Customers</Link>
       <Link to='/library'>Videos</Link>
-      {selectedCustomer && selectedVideo ? <Link to='/checkout'>Checkout</Link> : ''}
+      {selectedCustomer && selectedVideo ? checkOutVideoBtn() : ''}
       <Route path='/' render={() => selectedVideo} />
       <Route path='/' render={() => selectedCustomer} />
       <Route path='/customers' component={() => <Customers customers={customers} onClickCallback={showCustomer} />}/>
