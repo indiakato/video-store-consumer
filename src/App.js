@@ -19,7 +19,7 @@ const App = () => {
       <Link to='/library'>Videos</Link>
       <Route path='/' render={() => selectedVideo} />
       <Route path='/customers' component={() => <Customers url='http://localhost:3000' />}/>
-      <Route path='/videos' component={() => <Videos url='http://localhost:3000' onClickCallback={setVideo}/>}/>
+      <Route path='/library' component={() => <Videos url='http://localhost:3000' onClickCallback={setVideo}/>}/>
     </Router>
   );
 }
