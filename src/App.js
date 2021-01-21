@@ -10,12 +10,17 @@ const BASE_URL = 'http://localhost:3000';
 const App = () => {
 
   const [selectedVideo, setSelectedVideo] = useState('');
+  const [selectedCustomer, setSelectedCustomer] = useState('');
   const [videos, setVideos] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [errorMessage, setErrorMessage] = useState([]);
 
-  const setVideo = (videoTitle) => {
+  const showVideo = (videoTitle) => {
     setSelectedVideo(videoTitle)
+  }
+
+  const showCustomer = (customerName) => {
+    setSelectedCustomer(customerName)
   }
 
   useEffect(() => {
@@ -71,8 +76,9 @@ const App = () => {
       <Link to='/customers'>Customers</Link>
       <Link to='/library'>Videos</Link>
       <Route path='/' render={() => selectedVideo} />
-      <Route path='/customers' component={() => <Customers customers={customers} />}/>
-      <Route path='/library' component={() => <Videos videos={videos} onClickCallback={setVideo}/>}/>
+      <Route path='/' render={() => selectedCustomer} />
+      <Route path='/customers' component={() => <Customers customers={customers} onClickCallback={showCustomer} />}/>
+      <Route path='/library' component={() => <Videos videos={videos} onClickCallback={showVideo}/>}/>
     </Router>
     </div>
   );

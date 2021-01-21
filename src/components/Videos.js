@@ -19,7 +19,7 @@ const Videos = ({videos, onClickCallback}) => {
 }
 
 Videos.propTypes = {
-  videos: PropTypes.object.isRequired,
+  videos: PropTypes.array.isRequired,
   onClickCallback: PropTypes.func.isRequired
 };
 

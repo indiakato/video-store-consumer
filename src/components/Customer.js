@@ -1,19 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Customer = ({id, name, registeredAt, address, city, state, postalCode, phone, accountCredit, videosCheckedOutCount}) => {
+const Customer = ({id, name, registeredAt, address, city, state, postalCode, phone, accountCredit, videosCheckedOutCount, onClickCallback}) => {
 
-return(
-    <div>
-        <p>Id: {id}</p>
-        <p>Name: {name}</p>
-        <p>Registered At: {registeredAt}</p>
-        <p>Addres: {address} {city}, {state} {postalCode}</p>
-        <p>Phone: {phone}</p>
-        <p>Account Credit: {accountCredit}</p>
-        <p>Number of videos checked out: {videosCheckedOutCount}</p>
-    </div>
-    )
+  const onButtonClick = () => {
+    onClickCallback(name);
+  } 
+
+  return(
+      <div>
+          <button onClick={onButtonClick}>{name}</button>
+          <p>Id: {id}</p>
+          <p>Name: {name}</p>
+          <p>Registered At: {registeredAt}</p>
+          <p>Addres: {address} {city}, {state} {postalCode}</p>
+          <p>Phone: {phone}</p>
+          <p>Account Credit: {accountCredit}</p>
+          <p>Number of videos checked out: {videosCheckedOutCount}</p>
+      </div>
+      )
 }
 
 
