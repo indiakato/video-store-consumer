@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import './App.css';
 import Videos from './components/Videos';
 import Customers from './components/Customers'
+import Videosearch from './components/Videosearch'
+import Result from './components/Result'
 import axios from 'axios'
 import moment from 'moment'
 
@@ -36,6 +38,7 @@ const App = () => {
       <button onClick={checkout} className="btn btn-info">Check Out</button>
     )
   }
+
 
   useEffect(() => {
     axios.get(BASE_URL + '/videos')
@@ -118,6 +121,7 @@ const App = () => {
             <Link to='/' className="nav-item nav-link">Home</Link>
             <Link to='/customers' className="nav-item nav-link">Customers</Link>
             <Link to='/library' className="nav-item nav-link">Videos</Link>
+            <Link to='/search'>Search</Link>
           </div>
         </div>
       </nav>
@@ -125,9 +129,9 @@ const App = () => {
       {errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
       <Route path='/' render={selectedCustomer || selectedVideo ? videoCustomerShow : ''} />
       <Route path='/customers' component={() => <Customers customers={customers} onClickCallback={showCustomer} />}/>
+      <Route path='/' component={() => <Videosearch/>} />
       <Route path='/library' component={() => <Videos videos={videos} onClickCallback={showVideo}/>}/>
     </Router>
-    
     </div>
   );
 }
