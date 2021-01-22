@@ -27,14 +27,13 @@ const App = () => {
     setSelectedVideo(videoTitle)
   }
 
-  // todo: this shows the customer id and not name on every page now
-  const showCustomer = ([customerID, customerName]) => {
+  const showCustomer = (customerID) => {
     setSelectedCustomer(customerID)
   }
 
   const checkOutVideoBtn = () => {
     return (
-      <button onClick={checkout} >Check Out</button>
+      <button onClick={checkout} className="btn btn-info">Check Out</button>
     )
   }
 
@@ -95,17 +94,36 @@ const App = () => {
 
   }
 
+  const videoCustomerShow = () => {
+    
+    return(<div class="alert alert-primary" role="alert">
+      <p>{selectedCustomer ? `Selected Customer ID: ${selectedCustomer}`  : ''}</p>
+      <p>{selectedVideo ? `Selected Video Title: ${selectedVideo}`  : ''}</p>
+      {selectedCustomer && selectedVideo ? checkOutVideoBtn() : ''}
+    </div>)
+  }
+
   
   return (
     <div>
-      {errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
+      
       <Router>
-      <Link to='/'>Home</Link>
-      <Link to='/customers'>Customers</Link>
-      <Link to='/library'>Videos</Link>
-      {selectedCustomer && selectedVideo ? checkOutVideoBtn() : ''}
-      <Route path='/' render={() => selectedVideo} />
-      <Route path='/' render={() => selectedCustomer} />
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <span className="navbar-brand">Full Stack Video Store</span>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"   aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="navbar-nav">
+            <Link to='/' className="nav-item nav-link">Home</Link>
+            <Link to='/customers' className="nav-item nav-link">Customers</Link>
+            <Link to='/library' className="nav-item nav-link">Videos</Link>
+          </div>
+        </div>
+      </nav>
+
+      {errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
+      <Route path='/' render={selectedCustomer || selectedVideo ? videoCustomerShow : ''} />
       <Route path='/customers' component={() => <Customers customers={customers} onClickCallback={showCustomer} />}/>
       <Route path='/library' component={() => <Videos videos={videos} onClickCallback={showVideo}/>}/>
     </Router>
