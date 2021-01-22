@@ -98,13 +98,23 @@ const App = () => {
   
   return (
     <div>
-      <nav className="navbar navbar-light bg-light">
-        <Link to='/'>Home</Link>
-        <Link to='/customers'>Customers</Link>
-        <Link to='/library'>Videos</Link>
-      </nav>
-      {errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
+      
       <Router>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <span className="navbar-brand">Full Stack Video Store</span>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"   aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="navbar-nav">
+            <Link to='/' className="nav-item nav-link">Home</Link>
+            <Link to='/customers' className="nav-item nav-link">Customers</Link>
+            <Link to='/library' className="nav-item nav-link">Videos</Link>
+          </div>
+        </div>
+      </nav>
+
+      {errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
 
       {selectedCustomer && selectedVideo ? checkOutVideoBtn() : ''}
       <Route path='/' render={() => selectedVideo} />

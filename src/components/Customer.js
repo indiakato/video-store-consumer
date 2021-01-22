@@ -8,16 +8,18 @@ const Customer = ({id, name, registeredAt, address, city, state, postalCode, pho
   } 
 
   return(
-      <div>
-          <button onClick={onButtonClick}>{name}</button>
-          <p>Id: {id}</p>
-          <p>Name: {name}</p>
-          <p>Registered At: {registeredAt}</p>
-          <p>Addres: {address} {city}, {state} {postalCode}</p>
-          <p>Phone: {phone}</p>
+      <tr>
+          {/* <button onClick={onButtonClick}>{name}</button> */}
+          <td>{name}</td>
+          <td>{registeredAt}</td>
+          <td>{address} {city}, {state} {postalCode}</td>
+          <td>{phone}</td>
+          <td>{accountCredit}</td>
+          <td>{videosCheckedOutCount}</td>
+          {/* <p>Phone: {phone}</p>
           <p>Account Credit: {accountCredit}</p>
-          <p>Number of videos checked out: {videosCheckedOutCount}</p>
-      </div>
+          <p>Number of videos checked out: {videosCheckedOutCount}</p> */}
+      </tr>
       )
 }
 
