@@ -121,7 +121,7 @@ const App = () => {
             <Link to='/' className="nav-item nav-link">Home</Link>
             <Link to='/customers' className="nav-item nav-link">Customers</Link>
             <Link to='/library' className="nav-item nav-link">Videos</Link>
-            <Link to='/search'>Search</Link>
+            <Link to='/search' className="nav-item nav-link">Search</Link>
           </div>
         </div>
       </nav>
