@@ -38,3 +38,11 @@
   vertical-align: middle;
   height: 15px
 }
+
+.Video-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 500px;
+  width: 50%;
+}

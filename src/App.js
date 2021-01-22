@@ -6,7 +6,7 @@ import Customers from './components/Customers'
 import Videosearch from './components/Videosearch'
 import axios from 'axios'
 import moment from 'moment'
-import logo from './logo.svg'
+import videoImage from './IMG_1508.jpeg'
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -124,7 +124,7 @@ const App = () => {
             <Link to='/' className="nav-item nav-link">Home</Link>
             <Link to='/customers' className="nav-item nav-link">Customers</Link>
             <Link to='/library' className="nav-item nav-link">Videos</Link>
-            <Route className='Search-bar' path='/' component={() => <Videosearch videos={videos} />} />
+            <Route className='nav-item nav-link' path='/' component={() => <Videosearch videos={videos} />} />
           </div>
         </div>
       </nav>
@@ -137,6 +137,7 @@ const App = () => {
     <div className='App-header'>
         <h1 className='App-header-text'>Welcome to your Video Store</h1>
     </div>
+    <img className='Video-image' src={videoImage} alt='video store' />
     </div>
     
   );
