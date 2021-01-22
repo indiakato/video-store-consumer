@@ -28,13 +28,13 @@ const App = () => {
   }
 
   // todo: this shows the customer id and not name on every page now
-  const showCustomer = ([customerID, customerName]) => {
+  const showCustomer = (customerID) => {
     setSelectedCustomer(customerID)
   }
 
   const checkOutVideoBtn = () => {
     return (
-      <button onClick={checkout} >Check Out</button>
+      <button onClick={checkout} className="btn btn-info">Check Out</button>
     )
   }
 
@@ -95,6 +95,15 @@ const App = () => {
 
   }
 
+  const videoCustomerShow = () => {
+    
+    return(<div class="alert alert-primary" role="alert">
+      <p>{selectedCustomer ? `Selected Customer ID: ${selectedCustomer}`  : ''}</p>
+      <p>{selectedVideo ? `Selected Video Title: ${selectedVideo}`  : ''}</p>
+      {selectedCustomer && selectedVideo ? checkOutVideoBtn() : ''}
+    </div>)
+  }
+
   
   return (
     <div>
@@ -115,10 +124,7 @@ const App = () => {
       </nav>
 
       {errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
-
-      {selectedCustomer && selectedVideo ? checkOutVideoBtn() : ''}
-      <Route path='/' render={() => selectedVideo} />
-      <Route path='/' render={() => selectedCustomer} />
+      <Route path='/' render={selectedCustomer || selectedVideo ? videoCustomerShow : ''} />
       <Route path='/customers' component={() => <Customers customers={customers} onClickCallback={showCustomer} />}/>
       <Route path='/library' component={() => <Videos videos={videos} onClickCallback={showVideo}/>}/>
     </Router>
