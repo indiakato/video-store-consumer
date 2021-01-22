@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 const Result = (props) => {
@@ -13,6 +13,8 @@ const Result = (props) => {
 
 Result.propTypes = {
     title: PropTypes.string,
+    overview: PropTypes.string,
+    releaseDate: PropTypes.string,
     addToLibrary: PropTypes.func
 }
 

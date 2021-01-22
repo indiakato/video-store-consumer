@@ -20,7 +20,7 @@ const Videosearch = (props) => {
     const searchVideo = searchResults.map((result) => {
         return (
             <Result title={result.title} overview={result.overview}
-            release_date={result.release_date} addToLibrary={result.addToLibrary}
+            releaseDate={result.release_date} addToLibrary={result.addToLibrary}
             key={result.id} />
         )
         
@@ -82,8 +82,7 @@ const Videosearch = (props) => {
 }  
 
 Videosearch.propTypes = {
-    videos: PropTypes.array,
-    onInputChange: PropTypes.func
+    videos: PropTypes.array.isRequired
 }
 
 export default Videosearch;
