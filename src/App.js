@@ -39,6 +39,7 @@ const App = () => {
   }
 
 
+
   useEffect(() => {
     axios.get(BASE_URL + '/videos')
     .then((response) => {
@@ -106,6 +107,8 @@ const App = () => {
   }
 
   
+
+  
   return (
     <div>
       
@@ -120,7 +123,6 @@ const App = () => {
             <Link to='/' className="nav-item nav-link">Home</Link>
             <Link to='/customers' className="nav-item nav-link">Customers</Link>
             <Link to='/library' className="nav-item nav-link">Videos</Link>
-            <Link to='/search' className="nav-item nav-link">Search</Link>
           </div>
         </div>
       </nav>
@@ -128,8 +130,8 @@ const App = () => {
       {errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
       <Route path='/' render={selectedCustomer || selectedVideo ? videoCustomerShow : ''} />
       <Route path='/customers' component={() => <Customers customers={customers} onClickCallback={showCustomer} />}/>
+      <Route path='/' component={() => <Videosearch videos={videos} />} />
       <Route path='/library' component={() => <Videos videos={videos} onClickCallback={showVideo}/>}/>
-      <Route path='/search' component={() => <Videosearch/>} />
     </Router>
     </div>
   );
