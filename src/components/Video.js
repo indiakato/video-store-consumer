@@ -7,10 +7,8 @@ const Video = ({id, title, overview, releaseDate, imageUrl, externalId, onClickC
   const onButtonClick = () => {
     onClickCallback(title);
   } 
-
   return(
-      <div className=""> 
-        <div className="card col-9">
+        <div className="card">
           <img className="card-img-top" src={imageUrl} alt={`${title} book cover`}></img>
           <div className="card-body">
           <div className="d-flex justify-content-between align-items-center mb-3">
@@ -20,7 +18,6 @@ const Video = ({id, title, overview, releaseDate, imageUrl, externalId, onClickC
             <p className="card-text">Published: {releaseDate}</p>
             <p className="card-text">{overview}</p>
           </div>
-      </div>
     </div>
 
   )
