@@ -6,16 +6,14 @@ const Videos = ({videos, onClickCallback}) => {
 
   const loadBoard = () => {
     return videos.map((video) => {
-      return <div className="col-md-6 col-lg-4 d-flex align-items-stretch "> <Video id={video.id} title={video.title} overview={video.overview} releaseDate={video.releaseDate} imageUrl={video.imageUrl} externalId={video.externalID} onClickCallback={onClickCallback} key={video.id}/></div>
+      return <div className="col-md-6 col-lg-3 d-flex align-items-stretch "> <Video id={video.id} title={video.title} overview={video.overview} releaseDate={video.releaseDate} imageUrl={video.imageUrl} externalId={video.externalID} onClickCallback={onClickCallback} key={video.id}/></div>
     })
   }
 
   return(
-    <div className="container">
-      <div class="row">
+    <div class="row m-5">
       {loadBoard()}
-      </div>
-    </div> 
+    </div>
   )
 
 }

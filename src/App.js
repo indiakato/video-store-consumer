@@ -4,7 +4,6 @@ import './App.css';
 import Videos from './components/Videos';
 import Customers from './components/Customers'
 import Videosearch from './components/Videosearch'
-import Result from './components/Result'
 import axios from 'axios'
 import moment from 'moment'
 
