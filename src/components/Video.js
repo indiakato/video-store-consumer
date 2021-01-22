@@ -20,10 +20,6 @@ const Video = ({id, title, overview, releaseDate, imageUrl, externalId, onClickC
             <p className="card-text">Published: {releaseDate}</p>
             <p className="card-text">{overview}</p>
           </div>
-        
-        
-        
-        
       </div>
     </div>
 

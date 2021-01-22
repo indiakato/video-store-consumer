@@ -27,7 +27,6 @@ const App = () => {
     setSelectedVideo(videoTitle)
   }
 
-  // todo: this shows the customer id and not name on every page now
   const showCustomer = (customerID) => {
     setSelectedCustomer(customerID)
   }
