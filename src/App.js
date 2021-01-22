@@ -124,7 +124,7 @@ const App = () => {
             <Link to='/' className="nav-item nav-link">Home</Link>
             <Link to='/customers' className="nav-item nav-link">Customers</Link>
             <Link to='/library' className="nav-item nav-link">Videos</Link>
-            <Route className='nav-item nav-link' path='/' component={() => <Videosearch videos={videos} />} />
+            <Link to='/search' className='nav-item nav-link'>Search</Link>
           </div>
         </div>
       </nav>
@@ -133,11 +133,13 @@ const App = () => {
       <Route path='/' render={selectedCustomer || selectedVideo ? videoCustomerShow : ''} />
       <Route path='/customers' component={() => <Customers customers={customers} onClickCallback={showCustomer} />}/>
       <Route path='/library' component={() => <Videos videos={videos} onClickCallback={showVideo}/>}/>
+      <Route path='/search' component={() => <Videosearch videos={videos }/>}/>
+      <Route exact path='/'/>
     </Router>
     <div className='App-header'>
         <h1 className='App-header-text'>Welcome to your Video Store</h1>
     </div>
-    <img className='Video-image' src={videoImage} alt='video store' />
+      <img className='Video-image' src={videoImage} alt='video store' />
     </div>
     
   );
