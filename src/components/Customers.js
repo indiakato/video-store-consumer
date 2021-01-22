@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Customer from './Customer'
+import './Customers.css'
 
 const Customers = ({customers, onClickCallback}) => {
 
@@ -12,21 +13,30 @@ const Customers = ({customers, onClickCallback}) => {
     return(
       <div>
         <h2>Customers</h2>
-      <table className="table">
-          <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Registered At</th>
-          <th scope="col">Address</th>
-          <th scope="col">Phone</th>
-          <th scope="col">Account Credit</th>
-          <th scope="col">Videos Checked Out Count</th>
-        </tr>
-        </thead>
-        <tbody>
-        {loadCustomers()}
-        </tbody>
-      </table>
+        
+        <div className="container">
+          <div className='col-sm'>
+
+          </div>
+          <div className='col-md'>
+          <table className="table">
+            <thead>
+              <tr>
+              <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Registered At</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Account Credit</th>
+                <th scope="col">Videos Checked Out Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              {loadCustomers()}
+            </tbody>
+          </table>
+        </div>
+        </div>
       </div>
        
     )
