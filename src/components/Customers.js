@@ -15,10 +15,6 @@ const Customers = ({customers, onClickCallback}) => {
         <h2>Customers</h2>
         
         <div className="container">
-          <div className='col-sm'>
-
-          </div>
-          <div className='col-md'>
           <table className="table">
             <thead>
               <tr>
@@ -35,7 +31,6 @@ const Customers = ({customers, onClickCallback}) => {
               {loadCustomers()}
             </tbody>
           </table>
-        </div>
         </div>
       </div>
        
