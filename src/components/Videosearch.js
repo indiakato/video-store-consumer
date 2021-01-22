@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Result from './Result'
+import PropTypes from 'prop-types';
 
 const BASE_URL = 'http://localhost:3000';
 
 
-const Videosearch = () => {
+const Videosearch = (props) => {
     const [searchTerm, setSearchTerm] = useState([])
     const [searchResults, setSearchResults] = useState([])
     const [errorMessage, setErrorMessage] = useState([]);
@@ -19,7 +20,7 @@ const Videosearch = () => {
     const searchVideo = searchResults.map((result) => {
         return (
             <Result title={result.title} overview={result.overview}
-            release_date={result.release_date}
+            release_date={result.release_date} onClickCallback={result.onClickCallback}
             key={result.id} />
         )
         
@@ -36,6 +37,7 @@ const Videosearch = () => {
             .catch((error) => {
                 setErrorMessage(error.message)
             })
+        
     }
 
 
@@ -46,11 +48,16 @@ const Videosearch = () => {
                     type='text'
                     placeholder='Search'
                     onChange={onInputChange}
+                    onClickCallback={props.onClickCallback}
                 />
             </form>
             {searchVideo}
         </div>
     )
 }  
+
+Videosearch.propTypes = {
+    onClickCallback: PropTypes.func.isRequired
+}
 
 export default Videosearch;

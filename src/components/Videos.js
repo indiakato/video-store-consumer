@@ -20,7 +20,7 @@ const Videos = ({videos, onClickCallback}) => {
 
 Videos.propTypes = {
   videos: PropTypes.array.isRequired,
-  onClickCallback: PropTypes.func.isRequired
+  onClickCallback: PropTypes.func.isRequired,
 };
 
 export default Videos;

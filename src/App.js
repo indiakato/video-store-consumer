@@ -106,6 +106,24 @@ const App = () => {
     </div>)
   }
 
+  const addToLibrary = (video) => {
+    axios.post(`${BASE_URL}/videos`, video)
+    .then((response) => {    
+      const newVideoList = [...videos, response.data]
+      setVideos(newVideoList)
+    })
+    .catch((error) => {
+      setErrorMessage('Unable to add')
+    })
+    
+  }
+
+  const addToLibraryBtn = () => {
+    return (
+      <button onClick={addToLibrary}>Add to Library</button>
+    )
+  }
+
   
   return (
     <div>
@@ -129,7 +147,7 @@ const App = () => {
       {errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
       <Route path='/' render={selectedCustomer || selectedVideo ? videoCustomerShow : ''} />
       <Route path='/customers' component={() => <Customers customers={customers} onClickCallback={showCustomer} />}/>
-      <Route path='/' component={() => <Videosearch/>} />
+      <Route path='/' component={() => <Videosearch onClickCallback={addToLibrary}/>} />
       <Route path='/library' component={() => <Videos videos={videos} onClickCallback={showVideo}/>}/>
     </Router>
     </div>
