@@ -20,7 +20,7 @@ const Videosearch = (props) => {
     const searchVideo = searchResults.map((result) => {
         return (
             <Result title={result.title} overview={result.overview}
-            release_date={result.release_date} onClickCallback={result.onClickCallback}
+            release_date={result.release_date} addToLibrary={result.addToLibrary}
             key={result.id} />
         )
         
@@ -40,15 +40,40 @@ const Videosearch = (props) => {
         
     }
 
+    const addToLibrary = (externalID) => {
+        const selectedVideo = searchResults.find((video) => {
+            return video.externalID === externalID
+        })
+
+        selectedVideo['inventory'] = 10
+
+        const checkIfInLibrary = props.videos.find((video) => {
+            return video.externalID === externalID
+        })
+
+        if (checkIfInLibrary) {
+            setErrorMessage('The video you are trying to add is already in the library')
+        } else {
+            axios.post(`${BASE_URL}/videos`, selectedVideo)
+                .then((response) => {
+                    const updatedVideoList = [...props.videos, response.data]
+                    props.setVideos(updatedVideoList)
+                })
+                .catch((error) => {
+                    setErrorMessage(error.message)
+                })
+        }
+    }   
+
+
 
     return (
         <div>
-            <form>
+            <form className='new-search__form'>
                 <input
                     type='text'
                     placeholder='Search'
                     onChange={onInputChange}
-                    onClickCallback={props.onClickCallback}
                 />
             </form>
             {searchVideo}
@@ -57,7 +82,8 @@ const Videosearch = (props) => {
 }  
 
 Videosearch.propTypes = {
-    onClickCallback: PropTypes.func.isRequired
+    videos: PropTypes.array,
+    onInputChange: PropTypes.func
 }
 
 export default Videosearch;

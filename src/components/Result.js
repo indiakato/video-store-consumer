@@ -5,15 +5,15 @@ const Result = (props) => {
 
     return (
         <div>
-            {props.title}
-            <button onClick={onClickCallback} className="btn btn-info">Select</button>
+            <p >{props.title}</p>
+            {<button onClick={props.addToLibrary} className="btn btn-info">Add to Library</button>}
         </div>
     )
 }
 
 Result.propTypes = {
     title: PropTypes.string,
-    onClickCallback: PropTypes.func
+    addToLibrary: PropTypes.func
 }
 
 export default Result
