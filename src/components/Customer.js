@@ -4,20 +4,19 @@ import PropTypes from 'prop-types';
 const Customer = ({id, name, registeredAt, address, city, state, postalCode, phone, accountCredit, videosCheckedOutCount, onClickCallback}) => {
 
   const onButtonClick = () => {
-    onClickCallback([id, name]);
+    onClickCallback(id);
   } 
 
   return(
-      <div>
-          <button onClick={onButtonClick}>{name}</button>
-          <p>Id: {id}</p>
-          <p>Name: {name}</p>
-          <p>Registered At: {registeredAt}</p>
-          <p>Addres: {address} {city}, {state} {postalCode}</p>
-          <p>Phone: {phone}</p>
-          <p>Account Credit: {accountCredit}</p>
-          <p>Number of videos checked out: {videosCheckedOutCount}</p>
-      </div>
+      <tr>
+          <td>{<button onClick={onButtonClick} className="btn btn-info">Select</button>}</td>
+          <td>{name}</td>
+          <td>{registeredAt}</td>
+          <td>{address} {city}, {state} {postalCode}</td>
+          <td>{phone}</td>
+          <td>{accountCredit}</td>
+          <td>{videosCheckedOutCount}</td>
+      </tr>
       )
 }
 
