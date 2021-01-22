@@ -7,11 +7,18 @@
   height: 80px;
 }
 
-.App-header {
+.App-header-text {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+}
+
+.App-header {
+  vertical-align: middle;
 }
 
 .App-title {
@@ -25,4 +32,9 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.Search-bar {
+  vertical-align: middle;
+  height: 15px
 }

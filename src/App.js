@@ -6,6 +6,7 @@ import Customers from './components/Customers'
 import Videosearch from './components/Videosearch'
 import axios from 'axios'
 import moment from 'moment'
+import logo from './logo.svg'
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -123,6 +124,7 @@ const App = () => {
             <Link to='/' className="nav-item nav-link">Home</Link>
             <Link to='/customers' className="nav-item nav-link">Customers</Link>
             <Link to='/library' className="nav-item nav-link">Videos</Link>
+            <Route className='Search-bar' path='/' component={() => <Videosearch videos={videos} />} />
           </div>
         </div>
       </nav>
@@ -130,10 +132,13 @@ const App = () => {
       {errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
       <Route path='/' render={selectedCustomer || selectedVideo ? videoCustomerShow : ''} />
       <Route path='/customers' component={() => <Customers customers={customers} onClickCallback={showCustomer} />}/>
-      <Route path='/' component={() => <Videosearch videos={videos} />} />
       <Route path='/library' component={() => <Videos videos={videos} onClickCallback={showVideo}/>}/>
     </Router>
+    <div className='App-header'>
+        <h1 className='App-header-text'>Welcome to your Video Store</h1>
     </div>
+    </div>
+    
   );
 }
 
