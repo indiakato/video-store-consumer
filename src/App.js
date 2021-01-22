@@ -124,7 +124,6 @@ const App = () => {
             <Link to='/' className="nav-item nav-link">Home</Link>
             <Link to='/customers' className="nav-item nav-link">Customers</Link>
             <Link to='/library' className="nav-item nav-link">Videos</Link>
-            <Link to='/search'>Search</Link>
           </div>
         </div>
       </nav>
@@ -135,6 +134,7 @@ const App = () => {
       <Route path='/' component={() => <Videosearch videos={videos} />} />
       <Route path='/library' component={() => <Videos videos={videos} onClickCallback={showVideo}/>}/>
     </Router>
+    <ul></ul>
     </div>
   );
 }
